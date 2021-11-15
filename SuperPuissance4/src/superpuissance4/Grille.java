@@ -15,8 +15,12 @@ public class Grille {
     
 
     
-    public void Grille(){
-        
+    public  Grille(){
+      for(int i=0 ; i<7 ; i++){
+          for(int j=0 ; j<6 ; j++){
+              CellulesJeu[i][j] = new Cellule();
+          }
+      } 
     }
     public boolean ajouterJetonDansColonne(Jeton j,int num_colonne){
         for(int i=5;i<0;i--){
