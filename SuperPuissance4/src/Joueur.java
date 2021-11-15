@@ -8,11 +8,41 @@
  * @author richa
  */
 public class Joueur {
-    String Nom;
+    String nom;
     String Couleur;
-    List Jeton= new JetonList();
+    Jeton ListeJetons []=new Jeton[21];
     int nombreDesintegrateurs;
     int nombreJetonsRestants;
-    
-    
+public Joueur(String unnom){
+    nom=unnom;
+   
+}    
+
+public void affecterCouleur(String unecouleur){
+    Couleur=unecouleur;
 }
+public boolean ajouterJeton(Jeton  j ){
+   for(int i=0;i<ListeJetons.length;i++){
+       if (ListeJetons[i]==null){
+           ListeJetons[i]=j;
+           return true;  
+   }
+       
+}
+   return false;
+}
+
+public void ObtenirDesintegrateurs(){
+    nombreDesintegrateurs+=1;
+}
+public boolean utiliserDesintegrateur(){
+    if (nombreDesintegrateurs!=0){
+        nombreDesintegrateurs-=1;
+        return true;
+    }
+    else{
+      return false;  
+    }
+     
+}
+}  

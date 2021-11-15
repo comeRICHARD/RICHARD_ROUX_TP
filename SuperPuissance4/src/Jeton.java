@@ -9,15 +9,15 @@
  */
 
 
-public class Jeton (Couleur){
-    Random RandomAleat = new Random;
-    
-    public void Jeton("Couleur"){
-        String couleurjeton = Couleur;
+public class Jeton {
+    String Couleur;
+    public Jeton(String unecouleur){
+        Couleur= unecouleur;
     }
-    
-    public void lireCouleur(){
-        return couleurjeton;
-    }   
+    public String lireCouleur(){
+        return Couleur;
+    }  
+   
 }
+
 

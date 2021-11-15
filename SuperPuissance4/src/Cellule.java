@@ -55,8 +55,43 @@ public class Cellule{
             return false;
         }
     }
-    public void lireCouleurDuJeton(){
+    public boolean presenceTrouNoir(){
+        if(trounoir==true){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public boolean Desintegrateur(){
+        if(desintegrateur==true){
+            return true;
+        }else{
+            return false;
+        }
         
-        return ;
+    }
+    public String lireCouleurDuJeton(){
+        if(jetonCourant==null){          
+            return "vide";
+        }else{
+            return jetonCourant.lireCouleur();
+        }
+    }
+    public boolean recupererDesintegrateur(){
+        if(desintegrateur==true){
+            desintegrateur=false;
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public boolean activerTrouNoir(){
+        if(trounoir==true){
+            trounoir=false;
+            jetonCourant=null;
+            return true;
+        }else{
+            return false;
+        }
     }
 }
