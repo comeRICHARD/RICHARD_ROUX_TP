@@ -75,103 +75,63 @@ public class Grille {
         
         
     }
-    public boolean etreGagnantePourJoueur(Joueur j ){
+    public boolean etreGagnantePourJoueur(Joueur joueur ){
+      String Cj=joueur.Couleur;
        
-   
-        //Verifiaction des lignes vers la droite
-        for (int i=0;i<=3;i++){
+        //Verifiaction des lignes 
+        for (int i=0;i<=5;i++){
+            for (int j=0;j<=3;j++){
+                if(CellulesJeu[i][j].lireCouleurDuJeton()==Cj && CellulesJeu[i][j+1].lireCouleurDuJeton()==Cj && CellulesJeu[i][j+2].lireCouleurDuJeton()==Cj && CellulesJeu[i][j+3].lireCouleurDuJeton()==Cj){
+                    return true;
+                } 
+                
+                
+            }
+            
            
         }
-            int compt=0;
-            if(CellulesJeu[l][c+i]==Jeton j){
-            compt+=1;
-        }
-            if (compt==3){
-                return true;
+        //Verification des colonnes
+        for(int i=0;i<=2;i++)
+            for (int j=0;j<=6;j++){
+                if(CellulesJeu[i][j].lireCouleurDuJeton()==Cj && CellulesJeu[i][j+1].lireCouleurDuJeton()==Cj && CellulesJeu[i][j+2].lireCouleurDuJeton()==Cj && CellulesJeu[i][j+3].lireCouleurDuJeton()==Cj){
+                    return true;
+                }
+                
             }
+        
+        //Verification des diagonales vers le haut
+        for(int i=0;i<=2;i++){
+            for (int j=0;j<=3;j++){
+                if(CellulesJeu[i][j].lireCouleurDuJeton()==Cj && CellulesJeu[i][j+1].lireCouleurDuJeton()==Cj && CellulesJeu[i][j+2].lireCouleurDuJeton()==Cj && CellulesJeu[i][j+3].lireCouleurDuJeton()==Cj){
+                    return true;
+                }
+                
+                
+            }
+        }
+        
+        //Verification des diagonales vers le bas
+        for(int i=3;i<=5;i++){
+            for (int j=0;j<=3;j++){
+                if(CellulesJeu[i][j].lireCouleurDuJeton()==Cj && CellulesJeu[i][j+1].lireCouleurDuJeton()==Cj && CellulesJeu[i][j+2].lireCouleurDuJeton()==Cj && CellulesJeu[i][j+3].lireCouleurDuJeton()==Cj){
+                    return true;
+                }
+            }
+                
+            }
+        return false;
+    }
+        
+        
+        
+        
+            
+        
+        
+          
      
        
            
         }
            
-        //Verification des lignes vers la gauche  
-        for (int i=0;i<=3;i++){
-            int compt=0;
-            if (CellulesJeu[l][c-i]!==Jeton j){
-            compt+=1;
-               
-               
-            }
-        }
-         if (compt==3){
-                return true;
-            }
-        //Verification des colonnes vers le haut
-        for(int i=0;i<=3;i++){
-                for(int J=0;i<=3;i++){
-    
-        }
-            int compt=0;
-            if (CellulesJeu[l+i][J].){
-            compt+=1;
-                 
-        }
-        }
-         if (compt==3){
-                return true;
-            }
-        //Verification des colonnes vers le bas
-        for(int i=0;i<=3;i++){
-            int compt=0;
-            if (CellulesJeu[l-i][c]!==Jeton j){
-                compt+=1;
-                        }
-        }
-         if (compt==3){
-                return true;
-            }
-        //Verification diagonale vers le haut à droite
-        for(int i=0;i<=3;i++){
-            int compt=0;
-            if (CellulesJeu[l+i][c+i]!==Jeton j){
-                compt+=1;
-                        }
-        }
-         if (compt==3){
-                return true;
-            }
-                       
-        //Verification diagonale vers le bas à droite
-        for(int i=0;i<=3;i++){
-            int compt=0;
-            if (CellulesJeu[l-i][c+i]!==Jeton j){
-            compt+=1;
-           
-               
-                        }
-        }
-         if (compt==3){
-                return true;
-            }
-        //Verification diagonale vers le haut gauche
-        for(int i=0;i<=3;i++){
-            int compt=0;
-            if (CellulesJeu[l+i][c-i]!==Jeton j){
-                compt+=1;
-                        }
-        }
-         if (compt==3){
-                return true;
-            }
-        //Verification diagonale vers le haut gauche
-        for(int i=0;i<=3;i++){
-            int compt=0;
-            if (CellulesJeu[l-i][c-i]!==Jeton j){
-                compt+=1;
-                        }
-        }
-         if (compt==3){
-                return true;
-            }
-    
-}
+        
