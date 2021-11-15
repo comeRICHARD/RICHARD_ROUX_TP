@@ -8,44 +8,44 @@
  * @author richa
  */
 public class Grille {
-    for(int i=0 ; i<7 ; i++){
-        for(int j=0;j<6;j++){
-            CellulesJeu[j][i]=null;
-    }
+    Cellule[][] CellulesJeu = new Cellule[6][7];
     
-}
-    CellulesJeu Cellule = new CellulesJeu;
+    
+
+    
     public void Grille(){
         
     }
     public boolean ajouterJetonDansColonne(Jeton j,int num_colonne){
-        for(int i=5;i<CellulesJeu.length;i--){
+        for(int i=5;i<0;i--){
            
             if (CellulesJeu[i][num_colonne]==null){
                
-                CellulesJeu[i][num_colonne]=
+                return true;
                    
                
             }
            
         }
-        return false;
+        return false; 
     }
     public boolean etreRemplie(){
         for (int i=0 ; i<7 ; i++ ){
             for (int j=0 ; j<6 ; j++){
                 if (CellulesJeu!=null){
-                    return true;
-                }else{
                     return false;
+                
+                    
                 }
                 
             }
         }
+        return true;
     }
+    
     public void viderGrille(){
-        for (int i==0 ; i<7 ; i++ ){
-            for (int j==0 ; j<6 ; j++){
+        for (int i=0 ; i<7 ; i++ ){
+            for (int j=0 ; j<6 ; j++){
                 CellulesJeu[i][j]=null;
             }
         }
@@ -61,7 +61,7 @@ public class Grille {
     }
     }
     
-    public boolean celluleOccupee(num_ligne, num_colone){
+    public boolean celluleOccupee(int num_ligne, int num_colone){
         if(CellulesJeu[num_ligne][num_colone]!=null){
             return true;
         }else{
@@ -69,7 +69,9 @@ public class Grille {
         }
         
     }
-    public void lireCouleurDuJeton(int, int){
+    public void lireCouleurDuJeton(int num_ligne, int num_colone){
+        CellulesJeu[num_ligne][num_colone].lireCouleurDuJeton();
+        
         
     }
     public boolean etreGagnantePourJoueur(Joueur j ){
@@ -77,6 +79,8 @@ public class Grille {
    
         //Verifiaction des lignes vers la droite
         for (int i=0;i<=3;i++){
+           
+        }
             int compt=0;
             if(CellulesJeu[l][c+i]==Jeton j){
             compt+=1;
@@ -103,8 +107,11 @@ public class Grille {
             }
         //Verification des colonnes vers le haut
         for(int i=0;i<=3;i++){
+                for(int J=0;i<=3;i++){
+    
+        }
             int compt=0;
-            if (CellulesJeu[l+i][c]!==Jeton j){
+            if (CellulesJeu[l+i][J].){
             compt+=1;
                  
         }
@@ -167,7 +174,3 @@ public class Grille {
             }
     
 }
-public static final String ANSI_RESET = "\u001B[0m";
-public static final String ANSI_RED = "\u001B[31m";
-
-System.out.print(ANSI_RED + "RED COLOR" + ANSI_RESET)
