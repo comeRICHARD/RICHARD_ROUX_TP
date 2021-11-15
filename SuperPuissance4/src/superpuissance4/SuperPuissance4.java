@@ -29,6 +29,15 @@ public class SuperPuissance4 {
         Joueur joueur_1= new Joueur(nom_j1);
         Joueur joueur_2=new Joueur (nom_j2);
         */
+    public static void main(String [] args){
+        Jeton j = new Jeton("ROUGE");
+        String s = j.lireCouleur();
+        Cellule c=new Cellule();
+        c.affecterJeton(j);
+        
         Grille g=new Grille();
+        g.afficherGrilleSurConsole();
+    }
+        
         
 }
