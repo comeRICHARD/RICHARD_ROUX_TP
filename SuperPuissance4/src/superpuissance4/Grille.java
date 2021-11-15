@@ -1,3 +1,5 @@
+package superpuissance4;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -53,10 +55,9 @@ public class Grille {
     public void afficherGrilleSurConsole(){
         for(int i=0;i<6;i++){
             for(int j=0;j<7;j++){
-                if(trounoir.CellulesJeu[][]==true){
-                    System.out.print(Cellule);
-                }
-                        System.out.print()
+                
+                    System.out.print(CellulesJeu[i][j].lireCouleurDuJeton());
+                
         }
     }
     }

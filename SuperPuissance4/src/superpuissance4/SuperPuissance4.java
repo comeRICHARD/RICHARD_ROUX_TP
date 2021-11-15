@@ -13,7 +13,7 @@ public class SuperPuissance4 {
     /**
      * @param args the command line arguments
      */
-    //Initialisation de toutes les variables
+    /**Initialisation de toutes les variables
         Scanner sc = new Scanner(System.in);
         String nom_j1;
         String nom_j2;
@@ -28,4 +28,7 @@ public class SuperPuissance4 {
        
         Joueur joueur_1= new Joueur(nom_j1);
         Joueur joueur_2=new Joueur (nom_j2);
+        */
+        Grille g=new Grille();
+        
 }
