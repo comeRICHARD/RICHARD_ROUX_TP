@@ -15,6 +15,9 @@ public class Partie {
     Joueur ListesJoueurs[]=new Joueur[2];
     Joueur joueurCourant;
     Grille grilleJeu= new Grille();
+    
+    
+    
     public void initialiserPartie(){
         //On commence par vider la grille
         grilleJeu.viderGrille();
@@ -31,13 +34,17 @@ public class Partie {
        
         Joueur joueur_1= new Joueur(nom_j1);
         Joueur joueur_2=new Joueur (nom_j2);
+        ListesJoueurs[0]=joueur_1;
+        ListesJoueurs[1]=joueur_2;
+        
+        
         //Attribution des couleurs
         attribuerCouleursAuxJoueurs();
         // Attribution des Jetons
-                // On donne des jetons aux joueurs
+              
         for (int i = 0; i < 21; i++) {
 
-            Jeton j = new Jeton(Listejoueurs[0].Couleur);
+            Jeton j = new Jeton(joueur_1.Couleur);
 
             joueur_1.ajouterJeton(j);
 
@@ -52,25 +59,33 @@ public class Partie {
     }
     public void attribuerCouleursAuxJoueurs(){
         int n1;
-       String c1;
-       String c2;
        String [] tableauc={"Rouge","Jaune"};
        Random caleat = new Random();
        int valaleat = caleat.nextInt(1);
        n1=valaleat;
        if (n1==0){
-          Listesjoueurs[0]=new affecterCouleur(tableauc[n1]);
-          Listesjoueurs[1].affecterCouleur()=tableauc[1];
+          ListesJoueurs[0].Couleur=tableauc[n1];
+          ListesJoueurs[1].Couleur=tableauc[1];
            
        }else{
-          Listesjoueurs[0].Couleur =tableauc[n1];
-          Listesjoueurs[1].Couleur=tableauc[0];
+          ListesJoueurs[0].Couleur =tableauc[n1];
+          ListesJoueurs[1].Couleur=tableauc[0];
        }
        
        
        
        
         
+        
+    }
+    public void debuterPartie(){
+        initialiserPartie();
+        while(grilleJeu.etreGagnantePourJoueur(ListesJoueurs[0]) != true && grilleJeu.etreGagnantePourJoueur(ListesJoueurs[1]) != true && grilleJeu.etreRemplie() != true);{
+          if (grilleJeu.etreGagnantePourJoueur(ListesJoueurs[0])== true){
+              System.out.println()
+              
+          }  
+        }
         
     }
     
