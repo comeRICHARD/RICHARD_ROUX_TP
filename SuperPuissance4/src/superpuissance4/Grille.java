@@ -27,7 +27,7 @@ public class Grille {
         for(int i=5;i<0;i--){
            
             if (CellulesJeu[i][num_colonne]==null){
-               Cellules[i][num_colonne].affecterJeton(j);
+               CellulesJeu[i][num_colonne].affecterJeton(j);
                 return true;
                    
                
@@ -143,11 +143,11 @@ public class Grille {
                    return true;
                    
                }
-               return false;
+              
                
                
            }
-    
+     return false;
 }
                
        }
