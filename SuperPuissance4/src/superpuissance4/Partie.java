@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Partie {
     
     Joueur ListesJoueurs[]=new Joueur[2];
-    Joueur joueurCourant;
+    Joueur JoueurCourant;
     Grille grilleJeu= new Grille();
     
     
@@ -44,11 +44,13 @@ public class Partie {
               
         for (int i = 0; i < 21; i++) {
 
-            Jeton j = new Jeton(joueur_1.Couleur);
+            Jeton J = new Jeton(joueur_1.Couleur);
 
-            joueur_1.ajouterJeton(j);
+            joueur_1.ajouterJeton(J);
+                       
+            joueur_2.ajouterJeton(new Jeton(joueur_2.Couleur));
 
-            joueur2.ajouterJeton(new Jeton(joueur_2.Couleur));
+            
         }
 
 
@@ -79,12 +81,63 @@ public class Partie {
         
     }
     public void debuterPartie(){
+        boolean colonnepleine=true;
         initialiserPartie();
+        JoueurCourant=ListesJoueurs[0];
         while(grilleJeu.etreGagnantePourJoueur(ListesJoueurs[0]) != true && grilleJeu.etreGagnantePourJoueur(ListesJoueurs[1]) != true && grilleJeu.etreRemplie() != true);{
           if (grilleJeu.etreGagnantePourJoueur(ListesJoueurs[0])== true){
-              System.out.println()
+              grilleJeu.afficherGrilleSurConsole();
+              System.out.println("C'est le joueur" +ListesJoueurs[0].nom + "qui a gagné");
               
-          }  
+          }else if(grilleJeu.etreGagnantePourJoueur(ListesJoueurs[1])== true){
+              grilleJeu.afficherGrilleSurConsole();
+              System.out.println("C'est le joueur" +ListesJoueurs[1].nom + "qui a gagné");
+              
+          }else if(grilleJeu.etreRemplie() == true){
+              grilleJeu.afficherGrilleSurConsole();
+              System.out.println("La grille est pleine");
+              
+              
+          }else
+              
+              grilleJeu.afficherGrilleSurConsole();
+              System.out.println(ListesJoueurs[0].nom + "Entrez un numéro de colonne entre 1 et 6");
+              Scanner sc = new Scanner(System.in);
+              
+              //Coup validie
+              while(colonnepleine!=true){
+              int num_colonne=sc.nextInt()-1;
+              while (num_colonne<0 || num_colonne>6){
+                  System.out.println("Veuillez entrer un nombre compris entre 1 et 6");
+                  
+                   num_colonne=sc.nextInt()-1;
+              }
+              
+              colonnepleine=grilleJeu.colonneRemplie(num_colonne);
+              if(grilleJeu.colonneRemplie(num_colonne)!=true){
+                  System.out.println("La Colonne est pleine, Choissiez une autre");
+                  
+              }
+              
+              
+              Jeton j=JoueurCourant.ListeJetons[JoueurCourant.nombreJetonsRestants-1];
+              JoueurCourant.nombreJetonsRestants--;
+              grilleJeu.ajouterJetonDansColonne(j,num_colonne);
+              
+              if (JoueurCourant==ListesJoueurs[0]){
+                  JoueurCourant=ListesJoueurs[1];
+              }else{
+                  JoueurCourant=ListesJoueurs[0];
+              }
+              
+            
+        }
+              
+              
+              
+              
+              
+          
         }
         
     }
