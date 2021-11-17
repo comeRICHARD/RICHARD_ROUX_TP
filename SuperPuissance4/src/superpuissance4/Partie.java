@@ -82,7 +82,7 @@ public class Partie {
         initialiserPartie();
         while(grilleJeu.etreGagnantePourJoueur(ListesJoueurs[0]) != true && grilleJeu.etreGagnantePourJoueur(ListesJoueurs[1]) != true && grilleJeu.etreRemplie() != true);{
           if (grilleJeu.etreGagnantePourJoueur(ListesJoueurs[0])== true){
-              System.out.println()
+              System.out.println();
               
           }  
         }

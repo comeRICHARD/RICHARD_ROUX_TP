@@ -16,15 +16,9 @@ public class SuperPuissance4 {
     
     public static void main(String [] args){
         Partie nouvellepartie=new Partie();
-        
-        Jeton j = new Jeton("ROUGE");
-        String s = j.lireCouleur();
-        Cellule c=new Cellule();
-        c.affecterJeton(j);
-        
-        Grille g=new Grille();
-        g.afficherGrilleSurConsole();
+        nouvellepartie.debuterPartie();
     }
+        
         
         
 }
