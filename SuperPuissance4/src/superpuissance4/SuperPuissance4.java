@@ -13,23 +13,10 @@ public class SuperPuissance4 {
     /**
      * @param args the command line arguments
      */
-    /**Initialisation de toutes les variables
-        Scanner sc = new Scanner(System.in);
-        String nom_j1;
-        String nom_j2;
-       
-       
-       
-        //Entrée des noms
-        System.out.println("Joueur 1: Entrez votre nom");
-        nom_j1=sc.nextLine();
-        System.out.println("Joueur 2: Entrez votre nom");
-        nom_j2=sc.nextLine();
-       
-        Joueur joueur_1= new Joueur(nom_j1);
-        Joueur joueur_2=new Joueur (nom_j2);
-        */
+    
     public static void main(String [] args){
+        Partie nouvellepartie=new Partie();
+        
         Jeton j = new Jeton("ROUGE");
         String s = j.lireCouleur();
         Cellule c=new Cellule();

@@ -26,7 +26,7 @@ public class Grille {
         for(int i=5;i<0;i--){
            
             if (CellulesJeu[i][num_colonne]==null){
-               
+               CellulesJeu[i][num_colonne].affecterJeton(j);
                 return true;
                    
                
@@ -57,7 +57,7 @@ public class Grille {
         }
     }
     public void afficherGrilleSurConsole(){
-        for(int i=0;i<6;i++){
+        for(int i=5;i>=0;i--){
             for(int j=0;j<7;j++){
                 
                     System.out.print(CellulesJeu[i][j].lireCouleurDuJeton());
@@ -125,7 +125,31 @@ public class Grille {
             }
         return false;
     }
-        
+       public Boolean supprimerJeton(int num_ligne,int num_colonne){
+           if(CellulesJeu[num_ligne][num_colonne]==null ){
+               return false;
+       }else{
+                CellulesJeu[num_ligne][num_colonne]=null;
+                return true;}
+                
+                
+    
+           
+       }
+       public boolean colonneRemplie(int num_colonne){
+           for (int i=5;i>=0;i--){
+               if (CellulesJeu[i][num_colonne]==null){
+                   return true;
+                   
+               }
+              
+               
+               
+           }
+     return false;
+}
+               
+       }
         
         
         
@@ -136,6 +160,6 @@ public class Grille {
      
        
            
-        }
+        
            
         
