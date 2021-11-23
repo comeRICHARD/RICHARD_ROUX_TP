@@ -74,6 +74,10 @@ public class Partie {
           ListesJoueurs[1].Couleur=tableauc[0];
        }
        
+       System.out.println(ListesJoueurs[0].nom + "vous etes de couleur " + ListesJoueurs[0].Couleur);
+       System.out.println(ListesJoueurs[1].nom + "vous etes de couleur " + ListesJoueurs[1].Couleur);
+       
+       
        
        
        
@@ -83,15 +87,17 @@ public class Partie {
     public void debuterPartie(){
         boolean colonnepleine=true;
         initialiserPartie();
+        grilleJeu.afficherGrilleSurConsole();
         JoueurCourant=ListesJoueurs[0];
+        System.out.println(ListesJoueurs[0].nom +" vous etes le premier à jouer");
         while(grilleJeu.etreGagnantePourJoueur(ListesJoueurs[0]) != true && grilleJeu.etreGagnantePourJoueur(ListesJoueurs[1]) != true && grilleJeu.etreRemplie() != true);{
           if (grilleJeu.etreGagnantePourJoueur(ListesJoueurs[0])== true){
               grilleJeu.afficherGrilleSurConsole();
-              System.out.println("C'est le joueur" +ListesJoueurs[0].nom + "qui a gagné");
+              System.out.println("C'est le joueur " +ListesJoueurs[0].nom + " qui a gagné");
               
           }else if(grilleJeu.etreGagnantePourJoueur(ListesJoueurs[1])== true){
               grilleJeu.afficherGrilleSurConsole();
-              System.out.println("C'est le joueur" +ListesJoueurs[1].nom + "qui a gagné");
+              System.out.println("C'est le joueur " +ListesJoueurs[1].nom + " qui a gagné");
               
           }else if(grilleJeu.etreRemplie() == true){
               grilleJeu.afficherGrilleSurConsole();
@@ -100,11 +106,11 @@ public class Partie {
               
           }else
               
-              grilleJeu.afficherGrilleSurConsole();
+              
               System.out.println(ListesJoueurs[0].nom + "Entrez un numéro de colonne entre 1 et 6");
               Scanner sc = new Scanner(System.in);
               
-              //Coup validie
+              //Coup valide
               while(colonnepleine!=true){
               int num_colonne=sc.nextInt()-1;
               while (num_colonne<0 || num_colonne>6){

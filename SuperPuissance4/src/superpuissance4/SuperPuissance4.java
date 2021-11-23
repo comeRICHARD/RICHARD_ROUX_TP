@@ -15,6 +15,7 @@ public class SuperPuissance4 {
      */
     
     public static void main(String [] args){
+        System.out.println("Bienvenue dans le Superpuissance 4");
         Partie nouvellepartie=new Partie();
         nouvellepartie.debuterPartie();
     }
