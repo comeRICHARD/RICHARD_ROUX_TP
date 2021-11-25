@@ -29,8 +29,10 @@ public class Cellule{
             
         }
     }
-    public void recupererJeton(){
-        return;
+    public Jeton recupererJeton(){
+        Jeton recupj=jetonCourant;
+        jetonCourant=null;
+        return recupj;
     }
     
     public boolean supprimerJeton(){
