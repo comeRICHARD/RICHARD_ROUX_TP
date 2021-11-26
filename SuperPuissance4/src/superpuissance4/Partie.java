@@ -20,6 +20,7 @@ public class Partie {
     
     public void initialiserPartie(){
         
+        
         //On commence par vider la grille
         grilleJeu.viderGrille();
         Cellule[][] CellulesJeu = new Cellule[6][7];
@@ -42,6 +43,7 @@ public class Partie {
         
         
         //Attribution des couleurs
+        
         attribuerCouleursAuxJoueurs();
         
         
@@ -53,11 +55,27 @@ public class Partie {
      
 
             ListesJoueurs[0].ajouterJeton(J);
-            ListesJoueurs[0].nombreJetonsRestants+=1;
+            ListesJoueurs[0].nombreJetonsRestants++;
             
                        
             joueur_2.ajouterJeton(new Jeton(ListesJoueurs[1].Couleur));
-            ListesJoueurs[1].nombreJetonsRestants+=1;
+            ListesJoueurs[1].nombreJetonsRestants++;
+            }
+            
+            /*Placement des 5 trous noir
+            Random troualeat=new Random();
+            int nbligne=6;
+            int nbcolonne=7;
+            for (int j=0;j<5;i++){
+                int lignealeat=troualeat.nextInt(nbligne);
+                int colonnealeat=troualeat.nextInt(nbligne);
+                while(grilleJeu.CellulesJeu[lignealeat][colonnealeat].placerTrouNoir()==false && grilleJeu.CellulesJeu[lignealeat][colonnealeat].presenceTrouNoir()==true){
+                     lignealeat=troualeat.nextInt(nbligne);
+                     colonnealeat=troualeat.nextInt(nbligne);
+                }
+                
+                */
+               
             
         }
 
@@ -66,7 +84,7 @@ public class Partie {
                 
            
         
-    }
+    
     public void attribuerCouleursAuxJoueurs(){
         int n1;
        String [] tableauc={"Rouge","Jaune"};

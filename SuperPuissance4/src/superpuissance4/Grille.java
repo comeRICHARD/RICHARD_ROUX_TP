@@ -87,16 +87,16 @@ public class Grille {
             System.out.println(); 
             for(int j=0;j<7;j++){
                 
-                if (celluleOccupee(i,j)==true){
-                      if (CellulesJeu[i][j].lireCouleurDuJeton()=="Rouge") {
+                if (celluleOccupee(i,j)==true){// Cas ou il y a un jeton dans la cellule
+                      if (lireCouleurDuJeton(i,j)=="Rouge") {
 
                     System.out.print("\u001B[31m  0  "); //On print un O rouge
 
-                }
-
-                else {
+                }else {
 
                    System.out.print("\u001B[33m  0  "); //On print un O en jaune
+
+                
 
                 }
                     
@@ -137,8 +137,8 @@ public class Grille {
         }
        
     }
-    public void lireCouleurDuJeton(int num_ligne, int num_colone){
-        CellulesJeu[num_ligne][num_colone].lireCouleurDuJeton();
+    public String lireCouleurDuJeton(int num_ligne, int num_colone){
+        return CellulesJeu[num_ligne][num_colone].lireCouleurDuJeton();
        
        
     }
