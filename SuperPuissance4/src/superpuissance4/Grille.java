@@ -60,8 +60,8 @@ public class Grille {
         for(int i=5;i>=0;i--){
             for(int j=0;j<7;j++){
                 
-                if(CellulesJeu[i][j].jetonCourant==null){
-                    System.out.println("\u001B[0m N");
+                if(CellulesJeu[i][j]==null){
+                    System.out.println("_");
                 }else{
                     System.out.print(CellulesJeu[i][j].jetonCourant);
                 }

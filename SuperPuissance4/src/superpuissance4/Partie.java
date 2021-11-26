@@ -74,8 +74,8 @@ public class Partie {
           ListesJoueurs[1].Couleur=tableauc[0];
        }
        
-       System.out.println(ListesJoueurs[0].nom + "vous etes de couleur " + ListesJoueurs[0].Couleur);
-       System.out.println(ListesJoueurs[1].nom + "vous etes de couleur " + ListesJoueurs[1].Couleur);
+       System.out.println(ListesJoueurs[0].nom + " vous etes de couleur " + ListesJoueurs[0].Couleur);
+       System.out.println(ListesJoueurs[1].nom + " vous etes de couleur " + ListesJoueurs[1].Couleur);
        
        
        
