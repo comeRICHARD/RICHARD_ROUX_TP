@@ -115,31 +115,9 @@ public class Partie
 		while (grilleJeu.etreGagnantePourJoueur(ListesJoueurs[0]) != true && grilleJeu.etreGagnantePourJoueur(ListesJoueurs[1]) != true && grilleJeu.etreRemplie() != true)
 		{
 			grilleJeu.afficherGrilleSurConsole();
-			
-			//cas ou le joueur 1 gagne
-			if (grilleJeu.etreGagnantePourJoueur(ListesJoueurs[0]))
-			{
-				grilleJeu.afficherGrilleSurConsole();
-				System.out.println("C'est le joueur " + ListesJoueurs[0].nom + " qui a gagné");
-				
-				//cas ou le joueur 2 gagne
-				
-			}
-			else if (grilleJeu.etreGagnantePourJoueur(ListesJoueurs[1]))
-			{
-				grilleJeu.afficherGrilleSurConsole();
-				System.out.println("C'est le joueur " + ListesJoueurs[1].nom + " qui a gagné");
-				
-				//cas ou la grille est pleine
-				
-			}
-			else if (grilleJeu.etreRemplie())
-			{
-				grilleJeu.afficherGrilleSurConsole();
-				System.out.println("La grille est pleine");
-				
+						
 				//déroulement de la partie
-			}
+			
 			
 			do
 			{
@@ -192,10 +170,36 @@ public class Partie
 			}
 			
 		}
-		
-	}
-	
+                //cas ou le joueur 1 gagne
+			if (grilleJeu.etreGagnantePourJoueur(ListesJoueurs[0]))
+			{
+				grilleJeu.afficherGrilleSurConsole();
+                                System.out.println();
+				System.out.println("C'est le joueur " + ListesJoueurs[0].nom + " qui a gagné");
+				
+				//cas ou le joueur 2 gagne
+				
+			}
+			else if (grilleJeu.etreGagnantePourJoueur(ListesJoueurs[1]))
+			{
+				grilleJeu.afficherGrilleSurConsole();
+                                System.out.println();
+				System.out.println("C'est le joueur " + ListesJoueurs[1].nom + " qui a gagné");
+				
+				//cas ou la grille est pleine
+				
+			}
+			else if (grilleJeu.etreRemplie())
+			{
+				grilleJeu.afficherGrilleSurConsole();
+                                System.out.println();
+				System.out.println("La grille est pleine");
+                        }
+        }
 }
-    
-    
+		
+	
+	
 
+    
+    
