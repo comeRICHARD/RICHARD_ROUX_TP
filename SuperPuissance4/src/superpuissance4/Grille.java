@@ -160,9 +160,9 @@ public class Grille
 			    // source d'erreur. tu utilises == pour comparer des string alors qu'il faut utiliser stringA.equals(stringB)
 			    
 				if (cellulesJeu[i][j] != null && cellulesJeu[i][j].lireCouleurDuJeton().equals(Cj)
-					&& cellulesJeu[i + 1][j + 1] != null && cellulesJeu[i][j + 1].lireCouleurDuJeton() == Cj
-					&& cellulesJeu[i + 2][j + 2] != null && cellulesJeu[i][j + 2].lireCouleurDuJeton() == Cj
-					&& cellulesJeu[i + 3][j + 3] != null && cellulesJeu[i][j + 3].lireCouleurDuJeton() == Cj)
+					&& cellulesJeu[i][j + 1] != null && cellulesJeu[i][j + 1].lireCouleurDuJeton().equals(Cj)
+					&& cellulesJeu[i][j + 2] != null && cellulesJeu[i][j + 2].lireCouleurDuJeton().equals(Cj)
+					&& cellulesJeu[i][j + 3] != null && cellulesJeu[i][j + 3].lireCouleurDuJeton().equals(Cj))
 				{
 					return true;
 				}
@@ -174,10 +174,10 @@ public class Grille
 		for (int i = 0; i <= 2; i++)
 			for (int j = 0; j <= 6; j++)
 			{
-				if (cellulesJeu[i][j] != null && cellulesJeu[i][j].lireCouleurDuJeton() == Cj
-					&& cellulesJeu[i][j + 1] != null && cellulesJeu[i][j + 1].lireCouleurDuJeton() == Cj
-					&& cellulesJeu[i][j + 2] != null && cellulesJeu[i][j + 2].lireCouleurDuJeton() == Cj
-					&& cellulesJeu[i][j + 3] != null && cellulesJeu[i][j + 3].lireCouleurDuJeton() == Cj)
+				if (cellulesJeu[i][j] != null && cellulesJeu[i][j].lireCouleurDuJeton().equals(Cj)
+					&& cellulesJeu[i+1][j] != null && cellulesJeu[i+1][j].lireCouleurDuJeton().equals(Cj)
+					&& cellulesJeu[i+2][j] != null && cellulesJeu[i+2][j].lireCouleurDuJeton().equals(Cj)
+					&& cellulesJeu[i+3][j] != null && cellulesJeu[i+3][j].lireCouleurDuJeton() .equals(Cj))
 				{
 					return true;
 				}
@@ -189,10 +189,10 @@ public class Grille
 		{
 			for (int j = 0; j <= 3; j++)
 			{
-				if (cellulesJeu[i][j] != null && cellulesJeu[i][j].lireCouleurDuJeton() == Cj
-					&& cellulesJeu[i][j + 1] != null && cellulesJeu[i][j + 1].lireCouleurDuJeton() == Cj
-					&& cellulesJeu[i][j + 2] != null && cellulesJeu[i][j + 2].lireCouleurDuJeton() == Cj
-					&& cellulesJeu[i][j + 3] != null && cellulesJeu[i][j + 3].lireCouleurDuJeton() == Cj)
+				if (cellulesJeu[i][j] != null && cellulesJeu[i][j].lireCouleurDuJeton() .equals(Cj)
+					&& cellulesJeu[i+1][j+1] != null && cellulesJeu[i+1][j + 1].lireCouleurDuJeton() .equals(Cj)
+					&& cellulesJeu[i+2][j+2] != null && cellulesJeu[i+2][j + 2].lireCouleurDuJeton().equals(Cj)
+					&& cellulesJeu[i+3][j+3] != null && cellulesJeu[i+3][j + 3].lireCouleurDuJeton() .equals(Cj))
 				{
 					return true;
 				}
@@ -206,9 +206,9 @@ public class Grille
 			for (int j = 0; j <= 3; j++)
 			{
 				if (cellulesJeu[i][j] != null && cellulesJeu[i][j].lireCouleurDuJeton() == Cj
-					&& cellulesJeu[i][j + 1] != null && cellulesJeu[i][j + 1].lireCouleurDuJeton() == Cj
-					&& cellulesJeu[i][j + 2] != null && cellulesJeu[i][j + 2].lireCouleurDuJeton() == Cj
-					&& cellulesJeu[i][j + 3] != null && cellulesJeu[i][j + 3].lireCouleurDuJeton() == Cj)
+					&& cellulesJeu[i-1][j + 1] != null && cellulesJeu[i-1][j + 1].lireCouleurDuJeton() .equals(Cj)
+					&& cellulesJeu[i-2][j + 2] != null && cellulesJeu[i-2][j + 2].lireCouleurDuJeton().equals(Cj)
+					&& cellulesJeu[i-3][j + 3] != null && cellulesJeu[i-3][j + 3].lireCouleurDuJeton() .equals(Cj))
 				{
 					return true;
 				}
