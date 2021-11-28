@@ -142,7 +142,7 @@ public class Grille
 				}
 				else
 				{
-					System.out.print("| _ |");
+					System.out.print("\u001B[0m| _ |");
 				}
 			}
 		}
@@ -286,9 +286,9 @@ public class Grille
             return true;
         }
        public Jeton recupererJeton(int num_Ligne , int num_Colonne){ //supprime le jeton d'une cellule, et le renvoie
-        Jeton Jeton_recupere=cellulesJeu[num_Ligne][num_Colonne].jetonCourant; //On sauvegarde la valeur de ce jeton dans un nouvel objet
-        cellulesJeu[num_Ligne][num_Colonne].jetonCourant = null ;
-        return Jeton_recupere ;
+        Jeton jetonrecup=cellulesJeu[num_Ligne][num_Colonne].jetonCourant; 
+        cellulesJeu[num_Ligne][num_Colonne].supprimerJeton() ;
+        return jetonrecup ;
     }
        
        
