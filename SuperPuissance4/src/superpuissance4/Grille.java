@@ -94,6 +94,15 @@ public class Grille
 	
 	public void afficherGrilleSurConsole()
 	{
+             /*for (int e=0;e<NOMBRE_DE_LIGNES;e++){
+                 System.out.println();
+                                                    for (int r=0;r<NOMBRE_DE_COLONNES;r++){
+                                                        if(Aunjeton(e,r)){ 
+                                                            System.out.print("\u001B[37m  | _ |  ");
+                                                        }
+                                                    }
+                                                    
+                                                }*/ 
 		for (int i = 5; i >= 0; i--)
 		{
 			System.out.println();
@@ -106,6 +115,7 @@ public class Grille
 					{
 						System.out.print("\u001B[31m  0  ");
                                                 //On print un O rouge
+                                                    
 					}
 					else
 					{
@@ -118,17 +128,17 @@ public class Grille
 				{// Si il y a la présence d'un désintégrateur
 					if (cellulesJeu[i][j].presenceTrouNoir())
 					{
-						System.out.print("\u001B[0m | T | "); //On mets le trou noir devant le désintegrateur 
+						System.out.print("\u001B[35m| T |"); //On mets le trou noir devant le désintegrateur 
 					}
 					else
 					{
-						System.out.print("\u001B[0m | D | ");// On affiche le désintégrateurs
+						System.out.print("\u001B[34m| D |");// On affiche le désintégrateurs
 					}
 				}
 				
 				else if (cellulesJeu[i][j].presenceTrouNoir() )
 				{
-					System.out.print("\u001B[0m | T | ");
+					System.out.print("\u001B[35m| T |");
 				}
 				else
 				{
@@ -262,6 +272,21 @@ public class Grille
 			}
 		}
 	}
+        
+       public boolean Aunjeton(int numligne,int numcolonne){//Cette méthode pemet de savoir si une cellule en particulier possède un jeton
+           if (cellulesJeu[numligne][numcolonne].jetonCourant==null){
+               return true;
+           }
+           return false;
+                   
+       }
+       public boolean placerTrouNoir(int numLigne,int numColonne){ //Cette méthode vérifie si il y a un trou noir et le place si il n'yen a Uun
+        if (cellulesJeu[numLigne][numColonne].presenceTrouNoir()){
+            return false;
+        }
+            cellulesJeu[numLigne][numColonne].placerTrouNoir();
+            return true;
+        }
 }
        
        

@@ -55,22 +55,29 @@ public class Partie
 			ListesJoueurs[1].nombreJetonsRestants++;
 		}
             
-            /*Placement des 5 trous noir
+            //Placement des 5 trous noir
+                
             Random troualeat=new Random();
             int nbligne=6;
             int nbcolonne=7;
-            for (int j=0;j<5;i++){
+            
+            for (int j=0;j<5;j++){
+                //do{
                 int lignealeat=troualeat.nextInt(nbligne);
-                int colonnealeat=troualeat.nextInt(nbligne);
-                while(grilleJeu.CellulesJeu[lignealeat][colonnealeat].placerTrouNoir()==false && grilleJeu.CellulesJeu[lignealeat][colonnealeat].presenceTrouNoir()==true){
-                     lignealeat=troualeat.nextInt(nbligne);
-                     colonnealeat=troualeat.nextInt(nbligne);
-                }
+                int colonnealeat=troualeat.nextInt(nbcolonne);
+                grilleJeu.placerTrouNoir(lignealeat, colonnealeat);
+               
+            //}
+            //while(!grilleJeu.placerTrouNoir(lignealeat, colonnealeat));
+            }
+                     
                 
-                */
+                
+                
 		
 	}
-	
+        
+        
 	public void attribuerCouleursAuxJoueurs()
 	{
 	    // tu devrais utiliser un enum pour ROUGE-JAUNE
