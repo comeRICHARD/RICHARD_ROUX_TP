@@ -224,7 +224,7 @@ public class Partie
                                         
                                     
                                 }
-                                }while(( num_colonne < 0 || num_colonne > 6) && (num_ligne < 0 || num_ligne > 5)) ;
+                                }while((num_colonne < 0 || num_colonne > 6)&& (num_ligne < 0 || num_ligne > 5)) ;
                             
                             
                                if (grilleJeu.celluleOccupee(num_ligne, num_colonne)){
@@ -232,16 +232,18 @@ public class Partie
                                        Jeton recup= grilleJeu.recupererJeton(num_ligne, num_colonne);
                                        JoueurCourant.ajouterJeton(recup);
                                        grilleJeu.tasserGrille(num_colonne);
-                                       
-                                   }else
+                                   //cas ou le jeton n'est pas de la couleur du joueur    
+                                   }else{
                                        System.out.println();
                                        System.out.println("Ce Jeton ne vous appartient pas, vous ne pouvez pas l'enlever");
+                               }
                                    
                                    
-                                   
-                               }else
+                                //cas ou la cellule est vide   
+                               }else{
                                    System.out.println();
                                    System.out.println("Il n'y a aucun jeton sur les coordonnées que vous avez rentrées");
+                               }
                             }while (grilleJeu.celluleOccupee(num_ligne, num_colonne)==false && !grilleJeu.lireCouleurDuJeton(num_ligne, num_colonne).equals(JoueurCourant.Couleur) );
                             
                             
@@ -269,6 +271,7 @@ public class Partie
                         System.out.println(JoueurCourant.nom + "C'est à votre tour de jouer");
                         
 		}
+                //On test pour savoir pourquoi on est sortit de la boucle
                 //cas ou le joueur 1 gagne
 			if (grilleJeu.etreGagnantePourJoueur(ListesJoueurs[0]))
 			{
