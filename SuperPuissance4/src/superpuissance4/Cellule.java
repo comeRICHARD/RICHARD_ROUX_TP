@@ -16,7 +16,7 @@ public class Cellule
 	boolean trounoir       = false; // majuscule a Noir pour avoir du camelCase correct
 	boolean desintegrateur = false;
 	
-	// J'ai enlevé le constructeur. Tu peux initialiser les parametres directement
+	
 	
 	public boolean affecterJeton(Jeton j)
 	{

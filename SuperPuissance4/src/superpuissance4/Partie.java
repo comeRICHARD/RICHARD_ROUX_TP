@@ -107,10 +107,11 @@ public class Partie
 	{
 		//déclaration des variables
 		boolean colonnepleine = true;
-		int     num_colonne;
+		int     num_colonne = 0;
                 int num_ligne;
 		Scanner sc            = new Scanner(System.in);
                 int choixjoueur;
+                
                 
 		
 		initialiserPartie();
@@ -123,11 +124,17 @@ public class Partie
 		//Boucle du jeu, il y a 3 possibilités soit joueur 1 gagne, joueur 2 gagne ou joueur 3 gagne
 		while (grilleJeu.etreGagnantePourJoueur(ListesJoueurs[0]) != true && grilleJeu.etreGagnantePourJoueur(ListesJoueurs[1]) != true && grilleJeu.etreRemplie() != true)
 		{
+                    do{
 			grilleJeu.afficherGrilleSurConsole();
                         System.out.println();
                         System.out.println(JoueurCourant.nom + " Que souhaitez vous faire ?");
                         System.out.println("1/Jouer une jeton \n2/Récupérer un jeton");
                         choixjoueur=sc.nextInt();
+                        if(choixjoueur!=1 && choixjoueur!=2){
+                            System.out.println();
+                            System.out.println(" Rentrez un numéro parmis les choix proposés");
+                        }
+                    }while(choixjoueur!=1 && choixjoueur!=2);
 						
 				//déroulement de la partie
 			
@@ -174,26 +181,72 @@ public class Partie
 			JoueurCourant.nombreJetonsRestants--;
                         }
                         //Dans le cas ou le joueur souhaite récupérer un jeton
+    
                         else if(choixjoueur==2){
+                            
+                            //On commence par vérifier qu'il y a au moin 1 jetons dans la grille
+                            /* for(int i=0;i<Grille.NOMBRE_DE_LIGNES;i++){
+                               for(int j=0;j<Grille.NOMBRE_DE_COLONNES;j++){
+                                       if(grilleJeu.lireCouleurDuJeton(i, j)!=JoueurCourant.Couleur){
+                                          System.out.println();
+                                          System.out.println("Il n'y a aucun jeton de votre couleur  la grille");
+                                          choixjoueur=1; //Le joueur est donc obligé de placer un jeton
+                                          
+                                }
+                                    
+                                    }
+                             }*/
+                                                
+                               
+                           
+                            
                             do{
-                                
+                                do{
                             
                             System.out.println();
                             System.out.println("Renseignez les coordonnées du Jeton à récupérer");
                             System.out.println("Choix du numéro de ligne");
-                            num_ligne=sc.nextInt();
-                            System.out.println("Choix du numéro de colonne");
-                            num_colonne=sc.nextInt();
+                            num_ligne=sc.nextInt()-1;
+                            //message d'erreur si le numéro de ligne n'est pas compris entre 1 et 6
+				if (num_ligne < 0 || num_ligne > 5)
+				{
+					System.out.println("Veuillez entrer un nombre compris entre 1 et 6");
+				}
+				else
+				{
+                                    System.out.println("Choix du numéro de colonne");
+                                    num_colonne=sc.nextInt()-1;
+                            //message d'erreur si le numéro de lcolonne n'est pas compris entre 1 et 7
+                                    if(num_colonne < 0 || num_colonne > 6){
+                                        System.out.println("Veuillez entrer un nombre compris entre 1 et 7");
+                                        
+                                    }
+                                        
+                                    
+                                }
+                                }while(( num_colonne < 0 || num_colonne > 6) && (num_ligne < 0 || num_ligne > 5)) ;
                             
                             
                                if (grilleJeu.celluleOccupee(num_ligne, num_colonne)){
+                                   if(grilleJeu.lireCouleurDuJeton(num_ligne, num_colonne).equals(JoueurCourant.Couleur)){
+                                       Jeton recup= grilleJeu.recupererJeton(num_ligne, num_colonne);
+                                       JoueurCourant.ajouterJeton(recup);
+                                       grilleJeu.tasserGrille(num_colonne);
+                                       
+                                   }else
+                                       System.out.println();
+                                       System.out.println("Ce Jeton ne vous appartient pas, vous ne pouvez pas l'enlever");
                                    
                                    
-                               }
-                            }while (grilleJeu.celluleOccupee(num_ligne, num_colonne)==false );
+                                   
+                               }else
+                                   System.out.println();
+                                   System.out.println("Il n'y a aucun jeton sur les coordonnées que vous avez rentrées");
+                            }while (grilleJeu.celluleOccupee(num_ligne, num_colonne)==false && !grilleJeu.lireCouleurDuJeton(num_ligne, num_colonne).equals(JoueurCourant.Couleur) );
                             
                             
                         }
+                        
                         
                         
                         
