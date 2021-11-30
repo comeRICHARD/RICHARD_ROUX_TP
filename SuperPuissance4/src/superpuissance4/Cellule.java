@@ -115,11 +115,5 @@ public class Cellule
         return false;
 	}
         
-        /*public boolean aUnJeton(int num_ligne , int num_colonne){
-            if(celluleJeu.){
-                return true;
-            }
-            return false;
-
-}*/
+       
 }

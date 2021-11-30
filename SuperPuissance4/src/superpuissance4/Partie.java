@@ -12,17 +12,15 @@ import java.util.Scanner;
  * @author richa
  */
 public class Partie {
-    // normalement, toutes ces variables doivent etre "private"
 
-    Joueur ListesJoueurs[] = new Joueur[2]; // tu appelles ca liste alors que c'est un tableau. Correct nom serait "joueurs"
-    Joueur JoueurCourant; // lower case pour la premiere letre
+    Joueur ListesJoueurs[] = new Joueur[2];
+    Joueur JoueurCourant;
     Grille grilleJeu = new Grille();
 
     public void initialiserPartie() {
 
         //On commence par vider la grille
         grilleJeu.viderGrille();
-        //Cellule[][] CellulesJeu = new Cellule[6][7]; // "cellules" serait un nom plus correct
 
         //Entrée des noms
         Scanner sc = new Scanner(System.in);
@@ -31,7 +29,7 @@ public class Partie {
 
         System.out.println("Joueur 1: Entrez votre nom");
         nom_j1 = sc.nextLine();
-        System.out.println("Joueur 2: Entrez votre nom"); // n'oublis as de gerer si les deux rentrent le meme nom
+        System.out.println("Joueur 2: Entrez votre nom");
         nom_j2 = sc.nextLine();
 
         Joueur joueur_1 = new Joueur(nom_j1);
@@ -57,9 +55,6 @@ public class Partie {
         int nbcolonne = 7;
 
         for (int nbrtrounoir = 0; nbrtrounoir < 5;) {
-           
-                
-            
 
             int lignealeat = troualeat.nextInt(nbligne);
             int colonnealeat = troualeat.nextInt(nbcolonne);
@@ -67,35 +62,32 @@ public class Partie {
                 nbrtrounoir++;
             }
             //On place les desintegrateurs cacher dans les trous noirs
-            for (int nbrdesinteg=0;nbrdesinteg< 3;){
+            for (int nbrdesinteg = 0; nbrdesinteg < 2;) {
                 lignealeat = troualeat.nextInt(nbligne);
                 colonnealeat = troualeat.nextInt(nbcolonne);
-                
-                
-            if(grilleJeu.cellulesJeu[lignealeat][colonnealeat].presenceTrouNoir()){
-                grilleJeu.placerDesintegrateur(lignealeat, colonnealeat);
-                nbrdesinteg++;
-            }
-            }
-            }
-            //On place ensuite les désintegrateurs visibles
-            
-            for (int nbrdesinteg=0;nbrdesinteg< 2;){
-                int lignealeat = troualeat.nextInt(nbligne);
-                int colonnealeat = troualeat.nextInt(nbcolonne);
-                if(grilleJeu.cellulesJeu[lignealeat][colonnealeat].presenceTrouNoir()==false){
+
+                if (grilleJeu.cellulesJeu[lignealeat][colonnealeat].presenceTrouNoir()) {
                     grilleJeu.placerDesintegrateur(lignealeat, colonnealeat);
                     nbrdesinteg++;
-                    
                 }
             }
+        }
+        //On place ensuite les désintegrateurs visibles
 
-        
+        for (int nbrdesinteg = 0; nbrdesinteg < 3;) {
+            int lignealeat = troualeat.nextInt(nbligne);
+            int colonnealeat = troualeat.nextInt(nbcolonne);
+            if (grilleJeu.cellulesJeu[lignealeat][colonnealeat].presenceTrouNoir() == false) {
+                grilleJeu.placerDesintegrateur(lignealeat, colonnealeat);
+                nbrdesinteg++;
+
+            }
+        }
 
     }
 
     public void attribuerCouleursAuxJoueurs() {
-
+        //On crée un tableau Rouge ou jaune et on tire une valeur aléatoire entre 1 et 2 pour attribuer la couleur au joueur aléatoirement
         int n1;
         String[] tableauc = {"Rouge", "Jaune"};
         Random caleat = new Random();
@@ -119,10 +111,10 @@ public class Partie {
         //déclaration des variables
         boolean colonnepleine = true;
         int num_colonne = 0;
-        int num_ligne;
+        int num_ligne = 0;
         Scanner sc = new Scanner(System.in);
         int choixjoueur;
-
+        //On appelle la methode initialiser partie pour l'attribution des noms et des couleurs
         initialiserPartie();
 
         JoueurCourant = ListesJoueurs[0];
@@ -134,7 +126,7 @@ public class Partie {
             do {
                 grilleJeu.afficherGrilleSurConsole();
                 System.out.println();
-                System.out.println(JoueurCourant.nom + " Que souhaitez vous faire ?");
+                System.out.println(JoueurCourant.nom + " Que souhaitez vous faire ?");//Choix du joueur
                 System.out.println("1/Jouer une jeton \n2/Récupérer un jeton \n3/Utiliser un désintégrateur");
                 choixjoueur = sc.nextInt();
                 if (choixjoueur != 1 && choixjoueur != 2 && choixjoueur != 3) {
@@ -176,6 +168,7 @@ public class Partie {
                 //On enlève au joueur un jeton 
                 JoueurCourant.ListeJetons[JoueurCourant.nombreJetonsRestants - 1] = null;
                 JoueurCourant.nombreJetonsRestants--;
+                
             } //Dans le cas ou le joueur souhaite récupérer un jeton
             else if (choixjoueur == 2) {
 
@@ -231,10 +224,48 @@ public class Partie {
                     }
                 } while (!grilleJeu.celluleOccupee(num_ligne, num_colonne) && !grilleJeu.lireCouleurDuJeton(num_ligne, num_colonne).equals(JoueurCourant.Couleur));
 
-            }else if(choixjoueur == 3){
-                System.out.println();
-                System.out.println("Choisissez le jeton que vous voulez désintégré");
+            } else if (choixjoueur == 3) {
+                if (JoueurCourant.nombreDesintegrateurs != 0) {
+                    do {
+                        System.out.println();
+                        System.out.println("Renseignez les coordonnées du Jeton que vous souhaitez désintégrer");
+                        System.out.println("Choix du numéro de ligne");
+
+                        num_ligne = sc.nextInt() - 1;
+                        //message d'erreur si le numéro de ligne n'est pas compris entre 1 et 6
+                        if (num_ligne < 0 || num_ligne > 5) {
+                            System.out.println("Veuillez entrer un nombre compris entre 1 et 6");
+                        } else {
+                            System.out.println("Choix du numéro de colonne");
+                            num_colonne = sc.nextInt() - 1;
+                            //message d'erreur si le numéro de lcolonne n'est pas compris entre 1 et 7
+                            if (num_colonne < 0 || num_colonne > 6) {
+                                System.out.println("Veuillez entrer un nombre compris entre 1 et 7");
+
+                            }
+
+                        }
+                    } while ((num_colonne < 0 || num_colonne > 6) && (num_ligne < 0 || num_ligne > 5));
+                    if (grilleJeu.celluleOccupee(num_ligne, num_colonne)) {
+                    if (grilleJeu.lireCouleurDuJeton(num_ligne, num_colonne) != JoueurCourant.Couleur) {//Si il y a bien un jeton du joueur adverse on le supprime puis on tasse la grille et le joueur utilise un désintegrateur
+                        grilleJeu.supprimerJeton(num_ligne, num_colonne);
+                        grilleJeu.tasserGrille(num_colonne);
+                        JoueurCourant.nombreDesintegrateurs--;
+//Identification des cas ou il est impossible d'utiliser les desintegrateurs
+                    } else {
+                        System.out.println("Vous ne pouvez pas supprimer votre propre jeton");
+                    }
+
+                } else {
+                    System.out.print("Il n'y a aucun jeton dans la case que vous voulez supprimer");
+                }
+
+                } else {
+                    System.out.println("Vous ne pouvez pas désintégrer de jeton car vous ne possédez pas de désintegrateur");
+                    choixjoueur = 1;
+                }
                 
+
             }
 
             //Changement de tour des joueurs
