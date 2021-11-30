@@ -14,8 +14,8 @@ public class Grille
     public static final int NOMBRE_DE_LIGNES = 6;
     public static final int NOMBRE_DE_COLONNES = 7;
     
-    // cellules serait un meilleur nom
-    private Cellule[][] cellulesJeu = new Cellule[NOMBRE_DE_LIGNES][NOMBRE_DE_COLONNES]; 
+    
+    public Cellule[][] cellulesJeu = new Cellule[NOMBRE_DE_LIGNES][NOMBRE_DE_COLONNES]; 
 	
 	public Grille()
 	{
@@ -53,7 +53,7 @@ public class Grille
             }
 	}
 	
-	public boolean ajouterJetonDansColonne(Jeton j, int num_colonne) // c'est mieux de nommer numColonne
+	public boolean ajouterJetonDansColonne(Jeton j, int num_colonne) 
 	{
 		int k = 0;
 		if (Colonneremplie(num_colonne)) 
@@ -285,6 +285,15 @@ public class Grille
             cellulesJeu[num_Ligne][num_Colonne].placerTrouNoir();
             return true;
         }
+       
+       public boolean placerDesintegrateur(int num_Ligne,int num_Colonne){ //Cette méthode vérifie si il y a un desintegrateur et le place si il n'yen a Uun
+        if (cellulesJeu[num_Ligne][num_Colonne].placerDesintegrateur()){
+            return false;
+        }
+            cellulesJeu[num_Ligne][num_Colonne].placerDesintegrateur();
+            return true;
+        }
+       
        public Jeton recupererJeton(int num_Ligne , int num_Colonne){ //supprime le jeton d'une cellule, et le renvoie
         Jeton jetonrecup=cellulesJeu[num_Ligne][num_Colonne].jetonCourant; 
         cellulesJeu[num_Ligne][num_Colonne].supprimerJeton() ;

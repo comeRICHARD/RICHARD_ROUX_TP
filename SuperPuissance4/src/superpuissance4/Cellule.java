@@ -13,7 +13,7 @@ public class Cellule
 {
 	// les parametres devraient etre private
 	Jeton   jetonCourant;
-	boolean trounoir       = false; // majuscule a Noir pour avoir du camelCase correct
+	boolean trounoir       = false; 
 	boolean desintegrateur = false;
 	
 	
