@@ -13,10 +13,10 @@ public class Cellule
 {
 	// les parametres devraient etre private
 	Jeton   jetonCourant;
-	boolean trounoir       = false; // majuscule a Noir pour avoir du camelCase correct
+	boolean trounoir       = false; 
 	boolean desintegrateur = false;
 	
-	// J'ai enlevé le constructeur. Tu peux initialiser les parametres directement
+	
 	
 	public boolean affecterJeton(Jeton j)
 	{
@@ -115,10 +115,5 @@ public class Cellule
         return false;
 	}
         
-        /*public boolean aUnJeton(int num_ligne , int num_colonne){
-            if(celluleJeu.){
-                return true;
-            }
-            return false;
-}*/
+       
 }

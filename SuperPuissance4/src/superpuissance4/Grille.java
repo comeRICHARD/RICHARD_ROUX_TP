@@ -14,8 +14,8 @@ public class Grille
     public static final int NOMBRE_DE_LIGNES = 6;
     public static final int NOMBRE_DE_COLONNES = 7;
     
-    // cellules serait un meilleur nom
-    private Cellule[][] cellulesJeu = new Cellule[NOMBRE_DE_LIGNES][NOMBRE_DE_COLONNES]; // variables commencent toujours par une minuscule
+    
+    public Cellule[][] cellulesJeu = new Cellule[NOMBRE_DE_LIGNES][NOMBRE_DE_COLONNES]; 
 	
 	public Grille()
 	{
@@ -53,7 +53,7 @@ public class Grille
             }
 	}
 	
-	public boolean ajouterJetonDansColonne(Jeton j, int num_colonne) // c'est mieux de nommer numColonne
+	public boolean ajouterJetonDansColonne(Jeton j, int num_colonne) 
 	{
 		int k = 0;
 		if (Colonneremplie(num_colonne)) 
@@ -142,7 +142,7 @@ public class Grille
 				}
 				else
 				{
-					System.out.print("| _ |");
+					System.out.print("\u001B[0m| _ |");
 				}
 			}
 		}
@@ -253,10 +253,8 @@ public class Grille
 	
 	public void tasserGrille(int num_colonne)
 	{
-		for (int i = 0; i < NOMBRE_DE_COLONNES; i++)
-		{
-			for (int j = 0; j < NOMBRE_DE_LIGNES; i++)
-			{
+		for (int i = 0; i < NOMBRE_DE_LIGNES; i++){
+		
 				if (i == 5)
 				{
 					cellulesJeu[i][num_colonne].jetonCourant = null;
@@ -269,23 +267,45 @@ public class Grille
 						cellulesJeu[i + 1][num_colonne].jetonCourant = null;
 					}
 				}
-			}
+			
 		}
 	}
         
-       public boolean Aunjeton(int numligne,int numcolonne){//Cette méthode pemet de savoir si une cellule en particulier possède un jeton
-           if (cellulesJeu[numligne][numcolonne].jetonCourant==null){
+       public boolean Aunjeton(int num_ligne,int num_colonne){//Cette méthode pemet de savoir si une cellule en particulier possède un jeton
+           if (cellulesJeu[num_ligne][num_colonne].jetonCourant==null){
                return true;
            }
            return false;
                    
        }
-       public boolean placerTrouNoir(int numLigne,int numColonne){ //Cette méthode vérifie si il y a un trou noir et le place si il n'yen a Uun
-        if (cellulesJeu[numLigne][numColonne].presenceTrouNoir()){
+       public boolean placerTrouNoir(int num_Ligne,int num_Colonne){ //Cette méthode vérifie si il y a un trou noir et le place si il n'yen a Uun
+        if (cellulesJeu[num_Ligne][num_Colonne].presenceTrouNoir()){
             return false;
         }
-            cellulesJeu[numLigne][numColonne].placerTrouNoir();
+            cellulesJeu[num_Ligne][num_Colonne].placerTrouNoir();
             return true;
         }
+       
+       public boolean placerDesintegrateur(int num_Ligne,int num_Colonne){ //Cette méthode vérifie si il y a un desintegrateur et le place si il n'yen a Uun
+        if (cellulesJeu[num_Ligne][num_Colonne].placerDesintegrateur()){
+            return false;
+        }
+            cellulesJeu[num_Ligne][num_Colonne].placerDesintegrateur();
+            return true;
+        }
+       
+       public Jeton recupererJeton(int num_Ligne , int num_Colonne){ //supprime le jeton d'une cellule, et le renvoie
+        Jeton jetonrecup=cellulesJeu[num_Ligne][num_Colonne].jetonCourant; 
+        cellulesJeu[num_Ligne][num_Colonne].supprimerJeton() ;
+        return jetonrecup ;
+    }
+       
+       
+       
 }
        
+       
+           
+        
+           
+        
