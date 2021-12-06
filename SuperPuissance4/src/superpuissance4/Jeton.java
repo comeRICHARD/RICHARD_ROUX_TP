@@ -10,7 +10,6 @@ package superpuissance4;
  * @author richa
  */
 
-
 public class Jeton {
     String Couleur;
     public Jeton(String unecouleur){
@@ -22,4 +21,4 @@ public class Jeton {
    
 }
 
-
+   
