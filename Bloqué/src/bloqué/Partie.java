@@ -51,6 +51,8 @@ public class Partie {
     public void DebuterPartie(){
         System.out.println("Bonjour à toi géni des maths, à toi de jouer");
         System.out.println("Le but du jeu est de garder une grille avec des espaces vides");
+        System.out.println("Les 2 ne s'addittionnent qu'avec des 1 et inversement");
+        
         
 
     }
