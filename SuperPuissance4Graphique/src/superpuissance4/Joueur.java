@@ -11,14 +11,18 @@ package superpuissance4;
  */
 public class Joueur
 {
-    
+    // mets tout en private avec des getter/setter
     
 	String nom;
 	String Couleur;
 	
-	
+	// ce serait mieux d'utiliser une ArrayList. Comme ca tu peux faire add et remove dessus
+    // comme ca tu peux virer nombreJetonsRestants
+    // List<Jeton> jetons = new ArrayList<>();
+    // Jeton remove = jetons.remove(0);
+    // jetons.size()
     
-	Jeton  ListeJetons[] = new Jeton[21]; 
+	Jeton  ListeJetons[] = new Jeton[21]; // jetons serait un meilleur nom 
 	int    nombreDesintegrateurs;
 	int    nombreJetonsRestants;
 	
@@ -27,16 +31,18 @@ public class Joueur
 		nom = unnom;
 	}
 	
-	
+	// cette methode n'est jamais utilisee
 	public void affecterCouleur(String unecouleur)
 	{
 		Couleur = unecouleur;
 	}
 	
-	
+	// j est reserve pour nommer les variables dans un boucle for. Renomme le en jeton
 	public boolean ajouterJeton(Jeton jeton)
 	{
-	    
+	    // avec une liste, tout ce que tu as à faire ici est 
+        // jetons.add(j)
+        // de plus la methode pourrait etre void plutot que retourner boolean
 	    
 		for (int i = 0; i < ListeJetons.length; i++)
 		{
