@@ -9,5 +9,5 @@ package bloqué;
  * @author utilisateur
  */
 public class Carte {
-    
+
 }

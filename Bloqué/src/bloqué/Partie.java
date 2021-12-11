@@ -11,9 +11,12 @@ import java.util.Random;
  * @author richa
  */
 public class Partie {
-    int grille[][] = new int[4][4];
+    Grille grilleJeu = new Grille();
+
+    
 
     public void InitialiserPartie(){
+        /*
         int ColonneAleat [] = new int [4];
         int LigneAleat [] = new int [4];
         Random r = new Random();
@@ -41,17 +44,32 @@ public class Partie {
         
         int chiffreDonne = ChiffreAleat[r.nextInt(2)];
         
-        grille[nl][nc]=chiffreDonne;
+        grilleJeu[nl][nc]=chiffreDonne;
         // Ajoute dans la grille un 1 ou 2 dans clnn et ligne tirée//
+*/
+        for (int i=0 ; i<3 ; i++){
+            Random cl = new Random();
+           
+            int zz = cl.nextInt(4);
+            int yy = cl.nextInt(4);
+            grilleJeu.ajoutercartedanscolonne(zz , yy);
+
+        }
 
         
         }
+
      
-    }
+    
     public void DebuterPartie(){
         System.out.println("Bonjour à toi génie des maths, à toi de jouer");
         System.out.println("Le but du jeu est de garder une grille avec des espaces vides");
         System.out.println("Les 2 ne s'addittionnent qu'avec des 1 et inversement");
+        InitialiserPartie();
+        grilleJeu.afficherlagrillesurconsole();
+        while (!grilleJeu.etreperdant() || !grilleJeu.etreremplie()){
+            
+        }
         
         
 

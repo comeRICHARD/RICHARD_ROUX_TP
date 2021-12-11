@@ -67,11 +67,24 @@ public class Grille {
     }
 
     public void afficherlagrillesurconsole() {
+        
+        for(int i=0 ; i<4 ; i++){
+            for (int j=0 ; j<4 ; j++){
+                if(grille[i][j]!=null){
+                    System.out.print(" " +grille[i][j]+" ");
+                }else{
+                    System.out.print(" _ ");
+                }
+            }
+            System.out.println();
+           
+        }
 
     }
 
     public void additionnercartes(String direction) {
         //Dans le cas ou le man il swap vers le haut t'as capté
+        // eh oue mon frr jai capté
         if (direction == "H") {
 
             for (int j = 0; j < 4; j++) {
@@ -183,15 +196,12 @@ public class Grille {
 
     }
 
-    public void tassergrille() {
-
-    }
 
     public int aditionnergrille() {
         int score = 0;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                if (grille[i][j] != 1 || grille[i][j] != 1) {
+                if (grille[i][j] != 1 && grille[i][j] != 2) {
                     score += grille[i][j];
                 }
             }
@@ -202,7 +212,7 @@ public class Grille {
     public boolean etreperdant() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (grille[i][j] == grille[i + 1][j] || grille[i][j] == grille[i][j + 1]) {
+                if ((grille[i][j] != grille[i + 1][j] || grille[i][j] != grille[i][j + 1]) ) {
                     return true;
                 }
             }
@@ -216,7 +226,7 @@ public class Grille {
         if ( direction == "H"){
             for ( int i=0 ; i<4 ; i++){
                 int j=0;
-                while( j<=2 || grille[j][i] ){
+                while( j<=2){
                     if (grille[j][i]==null){
                         grille[j][i]=grille[j+1][i];
                         grille[j+1][i]=null;
@@ -230,7 +240,7 @@ public class Grille {
         if ( direction == "B"){
             for ( int i=0 ; i<4 ; i++){
                 int j=3;
-                while( j>=1 || grille[j][i] ){
+                while( j>=1){
                     if (grille[j][i]==null){
                         grille[j][i]=grille[j-1][i];
                         grille[j-1][i]=null;
@@ -243,7 +253,7 @@ public class Grille {
         if ( direction == "G"){
             for ( int i=0 ; i<4 ; i++){
                 int j=0;
-                while( j<=2 || grille[i][j] ){
+                while( j<=2 ){
                     if (grille[i][j]==null){
                         grille[i][j]=grille[i][j+1];
                         grille[i][j+1]=null;
@@ -256,10 +266,10 @@ public class Grille {
         if ( direction == "D"){
             for ( int i=0 ; i<4 ; i++){
                 int j=3;
-                while( j>=1 || grille[i][j] ){
+                while( j>=1){
                     if (grille[i][j]==null){
                         grille[i][j]=grille[i][j-1];
-                        grilles[i][j-1]=null;
+                        grille[i][j-1]=null;
                     }
                     j--;
                
