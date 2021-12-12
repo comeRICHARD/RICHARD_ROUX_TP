@@ -48,11 +48,11 @@ public class Partie {
         // Ajoute dans la grille un 1 ou 2 dans clnn et ligne tirée//
 */
         for (int i=0 ; i<3 ; i++){
-            Random cl = new Random();
+            Random tirage = new Random();
            
-            int zz = cl.nextInt(4);
-            int yy = cl.nextInt(4);
-            grilleJeu.ajoutercartedanscolonne(zz , yy);
+            int ligne = tirage.nextInt(4);
+            int colonne = tirage.nextInt(4);
+            grilleJeu.ajoutercartedanscolonne(ligne , colonne);
 
         }
 

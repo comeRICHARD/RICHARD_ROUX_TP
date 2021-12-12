@@ -67,17 +67,17 @@ public class Grille {
     }
 
     public void afficherlagrillesurconsole() {
-        
-        for(int i=0 ; i<4 ; i++){
-            for (int j=0 ; j<4 ; j++){
-                if(grille[i][j]!=null){
-                    System.out.print(" " +grille[i][j]+" ");
-                }else{
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (grille[i][j] != null) {
+                    System.out.print(" " + grille[i][j] + " ");
+                } else {
                     System.out.print(" _ ");
                 }
             }
             System.out.println();
-           
+
         }
 
     }
@@ -92,7 +92,7 @@ public class Grille {
                 while (i <= 2 && grille[i][j] != null && grille[i + 1][j] != null) {
                     //On traite le cas ou on a des 2 et des 1
                     if ((grille[i][j] == 1 || grille[i][j] == 2) && (grille[i + 1][j] == 1 || grille[i + 1][j] == 2)) {
-                        if (grille[i][j] == 1 && grille[i+1][j] == 2 || grille[i][j] == 2 && grille[i+1][j] == 1) {
+                        if (grille[i][j] == 1 && grille[i + 1][j] == 2 || grille[i][j] == 2 && grille[i + 1][j] == 1) {
                             grille[i][j] = 3;
                             grille[i + 1][j] = null;
                         }
@@ -113,55 +113,55 @@ public class Grille {
 
         }
         //La le frro il swappe en bas la
-        if(direction=="B"){
+        if (direction == "B") {
 
-        for (int j = 0; j <4; j++) {
-            int i = 3;
-            while (i >= 1 && grille[i][j] != null && grille[i - 1][j] != null) {
-                //On traite le cas ou on a des 2 et des 1
-                if ((grille[i][j] == 1 || grille[i - 1][i] == 2) && (grille[i][j] == 1 || grille[i - 1][j] == 2)) {
-                    if (grille[i][j] == 1 && grille[i-1][j] == 2 || grille[i][j] == 2 && grille[i-1][j] == 1) {
-                        grille[i][j] = 3;
-                        grille[i - 1][j] = null;
+            for (int j = 0; j < 4; j++) {
+                int i = 3;
+                while (i >= 1 && grille[i][j] != null && grille[i - 1][j] != null) {
+                    //On traite le cas ou on a des 2 et des 1
+                    if ((grille[i][j] == 1 || grille[i][i] == 2) && (grille[i - 1][j] == 1 || grille[i - 1][j] == 2)) {
+                        if (grille[i][j] == 1 && grille[i - 1][j] == 2 || grille[i][j] == 2 && grille[i - 1][j] == 1) {
+                            grille[i][j] = 3;
+                            grille[i - 1][j] = null;
+                        }
+                    } else {
+
+                        //On traite les autres cas                           
+                        if (grille[i][j] == grille[i - 1][j]) {
+                            grille[i][j] = 2 * grille[i][j];
+                            grille[i - 1][j] = null;
+
+                        }
                     }
-                } else {
+                    i--;
 
-                    //On traite les autres cas                           
-                    if (grille[i][j] == grille[i - 1][j]) {
-                        grille[i][j] = 2 * grille[i][j];
-                        grille[i - 1][j] = null;
-
-                    }
                 }
-                i--;
 
             }
-
-        }
         }
 
         //On swappe a droite
         if (direction == "D") {
 
             for (int i = 0; i < 4; i++) {
-                int j = 0;
-                while (j <= 2 && grille[i][j] != null && grille[i][j-1] != null) {
+                int j = 3;
+                while (j >= 1 && grille[i][j] != null && grille[i][j - 1] != null) {
                     //On traite le cas ou on a des 2 et des 1
-                    if ((grille[i][j] == 1 || grille[i][j-1] == 2) && (grille[i][j] == 1 || grille[i][j-1] == 2)) {
-                        if (grille[i][j] == 1 && grille[i][j-1] == 2 || grille[i][j] == 2 && grille[i][j-1] == 1) {
+                    if ((grille[i][j] == 1 || grille[i][j] == 2) && (grille[i][j - 1] == 1 || grille[i][j - 1] == 2)) {
+                        if (grille[i][j] == 1 && grille[i][j - 1] == 2 || grille[i][j] == 2 && grille[i][j - 1] == 1) {
                             grille[i][j] = 3;
                             grille[i][j] = null;
                         }
                     } else {
 
                         //On traite les autres cas                           
-                        if (grille[i][j] == grille[i + 1][j]) {
+                        if (grille[i][j] == grille[i][j - 1]) {
                             grille[i][j] = 2 * grille[i][j];
-                            grille[i + 1][j] = null;
+                            grille[i][j - 1] = null;
 
                         }
                     }
-                    i++;
+                    j--;
 
                 }
 
@@ -170,32 +170,31 @@ public class Grille {
         }
         //On vote pas a gauche
 
-        for (int j = 0; j < 4; j++) {
-            int i = 0;
-            while (i <= 2 && grille[i][j] != null && grille[i + 1][j] != null) {
+        for (int i = 0; i < 4; i++) {
+            int j = 0;
+            while (j <= 2 && grille[i][j] != null && grille[i][j + 1] != null) {
                 //On traite le cas ou on a des 2 et des 1
-                if ((grille[i][j] == 1 || grille[i + 1][i] == 2) && (grille[i][j] == 1 || grille[i + 1][j] == 2)) {
+                if ((grille[i][j] == 1 || grille[i][j] == 2) && (grille[i][j] == 1 || grille[i][j + 1] == 2)) {
                     if (grille[i][j] == 1 && grille[i][j + 1] == 2 || grille[i][j] == 2 && grille[i][j + 1] == 1) {
                         grille[i][j] = 3;
-                        grille[i + 1][j] = null;
+                        grille[i][j + 1] = null;
                     }
                 } else {
 
                     //On traite les autres cas                           
-                    if (grille[i][j] == grille[i + 1][j]) {
+                    if (grille[i][j] == grille[i][j + 1]) {
                         grille[i][j] = 2 * grille[i][j];
-                        grille[i + 1][j] = null;
+                        grille[i][j + 1] = null;
 
                     }
                 }
-                i++;
+                j++;
 
             }
 
         }
 
     }
-
 
     public int aditionnergrille() {
         int score = 0;
@@ -212,7 +211,7 @@ public class Grille {
     public boolean etreperdant() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if ((grille[i][j] != grille[i + 1][j] || grille[i][j] != grille[i][j + 1]) ) {
+                if ((grille[i][j] != grille[i + 1][j] || grille[i][j] != grille[i][j + 1])) {
                     return true;
                 }
             }
@@ -220,63 +219,63 @@ public class Grille {
         return false;
 
     }
-    public void TasserGrille(String direction){
+
+    public void TasserGrille(String direction) {
         // Dans cette methode, je fais cas par cas suivant la direction choisie le tassement des lignes ou colonnes
         // Ici je fais pour un swipe vers le haut, et commence en haut de la grille pour verif si ya une case null
-        if ( direction == "H"){
-            for ( int i=0 ; i<4 ; i++){
-                int j=0;
-                while( j<=2){
-                    if (grille[j][i]==null){
-                        grille[j][i]=grille[j+1][i];
-                        grille[j+1][i]=null;
+        if (direction == "H") {
+            for (int i = 0; i < 4; i++) {
+                int j = 0;
+                while (j <= 2) {
+                    if (grille[j][i] == null) {
+                        grille[j][i] = grille[j + 1][i];
+                        grille[j + 1][i] = null;
                     }
                     j++;
-               
-            }
+
+                }
             }
         }
         // Ici vers le bas en commencant donc d'en bas de la grille
-        if ( direction == "B"){
-            for ( int i=0 ; i<4 ; i++){
-                int j=3;
-                while( j>=1){
-                    if (grille[j][i]==null){
-                        grille[j][i]=grille[j-1][i];
-                        grille[j-1][i]=null;
+        if (direction == "B") {
+            for (int i = 0; i < 4; i++) {
+                int j = 3;
+                while (j >= 1) {
+                    if (grille[j][i] == null) {
+                        grille[j][i] = grille[j - 1][i];
+                        grille[j - 1][i] = null;
                     }
                     j--;
-               
-            }
+
+                }
             }
         }
-        if ( direction == "G"){
-            for ( int i=0 ; i<4 ; i++){
-                int j=0;
-                while( j<=2 ){
-                    if (grille[i][j]==null){
-                        grille[i][j]=grille[i][j+1];
-                        grille[i][j+1]=null;
+        if (direction == "G") {
+            for (int i = 0; i < 4; i++) {
+                int j = 0;
+                while (j <= 2) {
+                    if (grille[i][j] == null) {
+                        grille[i][j] = grille[i][j + 1];
+                        grille[i][j + 1] = null;
                     }
                     j++;
-               
-            }
+
+                }
             }
         }
-        if ( direction == "D"){
-            for ( int i=0 ; i<4 ; i++){
-                int j=3;
-                while( j>=1){
-                    if (grille[i][j]==null){
-                        grille[i][j]=grille[i][j-1];
-                        grille[i][j-1]=null;
+        if (direction == "D") {
+            for (int i = 0; i < 4; i++) {
+                int j = 3;
+                while (j >= 1) {
+                    if (grille[i][j] == null) {
+                        grille[i][j] = grille[i][j - 1];
+                        grille[i][j - 1] = null;
                     }
                     j--;
-               
-            }
+
+                }
             }
         }
-       
-       
+
     }
 }
