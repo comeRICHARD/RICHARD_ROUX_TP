@@ -12,11 +12,10 @@ import java.util.Scanner;
  * @author richa
  */
 public class Partie {
+
     Grille grilleJeu = new Grille();
 
-    
-
-    public void InitialiserPartie(){
+    public void InitialiserPartie() {
         /*
         int ColonneAleat [] = new int [4];
         int LigneAleat [] = new int [4];
@@ -47,89 +46,119 @@ public class Partie {
         
         grilleJeu[nl][nc]=chiffreDonne;
         // Ajoute dans la grille un 1 ou 2 dans clnn et ligne tirée//
-*/
-        for (int i=0 ; i<3 ; i++){
+         */
+        for (int i = 0; i < 3; i++) {
             Random tirage = new Random();
-           
+
             int ligne = tirage.nextInt(4);
             int colonne = tirage.nextInt(4);
-            grilleJeu.ajoutercartedanscolonne(ligne , colonne);
+            grilleJeu.ajoutercartedansgrille(ligne, colonne);
 
         }
 
-        
-        }
+    }
 
-     
-    
-    public void DebuterPartie(){
+    public void DebuterPartie() {
         System.out.println("Bonjour à toi génie des maths, à toi de jouer");
         System.out.println("Le but du jeu est de garder une grille avec des espaces vides en additionant les cartes présentant le meme chiffre");
         System.out.println("Les 2 ne s'addittionnent qu'avec des 1 et inversement");
         System.out.println("A chaque tour vous choisirez une direction dans laquelle vont se déplacer les cartes de la grille");
-        System.out.println("H pour haut \n B pour bas \n D pour droite \n G pour gauche");
+        System.out.println("8 pour haut \n 2 pour bas \n 6 pour droite \n 4 pour gauche");
         InitialiserPartie();
         //Déclaration des variables
-        String choixdirection;
-        Scanner reponse=new Scanner(System.in);
+        int choixdirection;
+        Scanner reponse = new Scanner(System.in);
         Random tirage = new Random();
         int ligne;
         int colonne;
-      
-        
-        while (!grilleJeu.etreperdant() || !grilleJeu.etreremplie()){
-            grilleJeu.afficherlagrillesurconsole();
-            
-            do{
-                
-                System.out.println("Choisissez une direction");
-                choixdirection=reponse.nextLine();
-                
-            }while(choixdirection!="H" || choixdirection!="B" || choixdirection!="G" || choixdirection!="D" );
-            
-            grilleJeu.additionnercartes(choixdirection);
-            grilleJeu.TasserGrille(choixdirection);
-            if (choixdirection=="H"){
-                do{
-                ligne=3;
-                colonne = tirage.nextInt(4);
-                grilleJeu.ajoutercartedanscolonne(ligne , colonne);
-                
-                }while(!grilleJeu.ajoutercartedanscolonne(ligne , colonne));
-            }else if (choixdirection=="B"){
-                do{
-                ligne=0;
-                colonne = tirage.nextInt(4);
-                grilleJeu.ajoutercartedanscolonne(ligne , colonne);
-                
-                }while(!grilleJeu.ajoutercartedanscolonne(ligne , colonne));
-            
-        }else if (choixdirection=="D"){
-                do{
-                ligne=tirage.nextInt(4);
-                colonne =0;
-                grilleJeu.ajoutercartedanscolonne(ligne , colonne);
-                
-                }while(!grilleJeu.ajoutercartedanscolonne(ligne , colonne));
-            
-        }else if (choixdirection=="G"){
-                do{
-                ligne=tirage.nextInt(4);;
-                colonne = 3;
-                grilleJeu.ajoutercartedanscolonne(ligne , colonne);
-                
-                }while(!grilleJeu.ajoutercartedanscolonne(ligne , colonne));
-            
-        }
-               
+        String direction;
 
-    }
-        if (grilleJeu.etreperdant() && grilleJeu.etreremplie()){
-            int score=0;
+        while (!grilleJeu.additionimpossible() || !grilleJeu.etreremplie()) {
+
+            grilleJeu.afficherlagrillesurconsole();
+            System.out.println("Choisissez une direction");
+            choixdirection = reponse.nextInt();
+
+            do {
+                if (choixdirection != 8 && choixdirection != 2 && choixdirection != 4 && choixdirection != 6) {
+                    System.out.println("Veuillez choisir parmit les directions proposées");
+                    System.out.println("8 pour haut \n 2 pour bas \n 6 pour droite \n 4 pour gauche");
+                    choixdirection = reponse.nextInt();
+                }
+
+            } while (choixdirection != 8 && choixdirection != 2 && choixdirection != 4 && choixdirection != 6);
+
+            if (choixdirection == 8) {
+                direction = "H";
+            } else if (choixdirection == 2) {
+                direction = "B";
+
+            } else if (choixdirection == 4) {
+                direction = "G";
+            } else {
+                direction = "D";
+            }
+
+            grilleJeu.additionnercartes(direction);
+            grilleJeu.TasserGrille(direction);
+
+            //On ajoute une carte sur la grille en fonction du sens ou se depalce l'utilisateur
+            if (direction == "H") {
+                int cmpt = 0;
+                while (cmpt == 0) {
+                    ligne = 3;
+                    colonne = tirage.nextInt(4);
+                    if (grilleJeu.ajoutercartedansgrille(ligne, colonne)) {
+                        cmpt += 1;
+
+                    }
+                }
+
+            } else if (direction == "B") {
+                int cmpt = 0;
+                while (cmpt == 0) {
+                    ligne = 0;
+                    colonne = tirage.nextInt(4);
+                    if (grilleJeu.ajoutercartedansgrille(ligne, colonne)) {
+                        cmpt += 1;
+
+                    }
+
+                }
+
+            } else if (direction == "D") {
+                int cmpt = 0;
+                while (cmpt == 0) {
+
+                    ligne = tirage.nextInt(4);
+                    colonne = 0;
+                    if (grilleJeu.ajoutercartedansgrille(ligne, colonne)) {
+                        cmpt += 1;
+                    }
+                }
+
+            } else if (direction == "G") {
+                int cmpt = 0;
+                while (cmpt == 0) {
+
+                    ligne = tirage.nextInt(4);;
+                    colonne = 3;
+                    if (grilleJeu.ajoutercartedansgrille(ligne, colonne)) {
+                        cmpt += 1;
+                    }
+
+                }
+
+            }
+        }
+
+        //Dans les cas ou l'on quitte la boucle de jeu, c'est que le joueur a perdu, on affiche donc la grille en affichant le score du joueur
+        if (grilleJeu.additionimpossible() && grilleJeu.etreremplie()) {
+            int score = 0;
+            grilleJeu.afficherlagrillesurconsole();
             System.out.println("Vous etes bloqué, vous avez perdu");
-            score=grilleJeu.aditionnergrille();
+            score = grilleJeu.calculscore();
             System.out.println("Votre score est de " + score + " points");
         }
-} 
+    }
 }
-        

@@ -11,9 +11,11 @@ import java.util.Random;
  * @author utilisateur
  */
 public class Grille {
+//On commence par créer une grille d'integer, ainsi qu'un tableau contenant les cartes à ajouter sur la grille au fur et à mesure
 
     int[] tabcarte = {1, 2, 3};
     Integer[][] grille = new Integer[4][4];
+//On commence par remplire la grille qui est remplit de null au début de la partie
 
     public Grille() {
         for (int i = 0; i < 4; i++) {
@@ -23,11 +25,12 @@ public class Grille {
             }
         }
     }
+//Cette méthode nous permet de vérifier qu'il n'y a plus aucune case null dans notre grille
 
     public boolean etreremplie() {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                if (grille[i][j] != null) {
+                if (grille[i][j] == null) {
                     return false;
                 }
             }
@@ -35,9 +38,10 @@ public class Grille {
         return true;
     }
 
+    //Cette méthode nous permet de savoir si une colonne est pleine 
     public boolean colonnepleine(int numcolonne) {
         for (int i = 0; i < 4; i++) {
-            if (grille[i][numcolonne] != null) {
+            if (grille[i][numcolonne] == null) {
                 return false;
 
             }
@@ -45,16 +49,18 @@ public class Grille {
         return true;
     }
 
+    //Cette méthode nous permet de savoir si une ligne est pleine   
     public boolean lignepleine(int numligne) {
         for (int j = 0; j < 4; j++) {
-            if (grille[numligne][j] != null) {
+            if (grille[numligne][j] == null) {
                 return false;
             }
         }
         return true;
     }
 
-    public boolean ajoutercartedanscolonne(int numligne, int numcolonne) {
+    //Cette méthode permet d'ajouter une carte dans une case de la grille en prenant comme paramètre les coordonées de la case   
+    public boolean ajoutercartedansgrille(int numligne, int numcolonne) {
         Random t = new Random();
         int tirage = t.nextInt(3);
         int numeroCarte = tabcarte[tirage];
@@ -66,14 +72,15 @@ public class Grille {
 
     }
 
+//Cette méthode nous permet d'afficher notre grille sur la console, elle est actualisée tout au long de la partie à chaque fois que le joueur joue    
     public void afficherlagrillesurconsole() {
 
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if (grille[i][j] != null) {
-                    System.out.print(" " + grille[i][j] + " ");
+                    System.out.print("  " + grille[i][j] + "  ");
                 } else {
-                    System.out.print(" _ ");
+                    System.out.print("  _  ");
                 }
             }
             System.out.println();
@@ -82,6 +89,7 @@ public class Grille {
 
     }
 
+//Avec cette méthode on peut additionner 2 cartes similaires côte à côte en traitant le cas des 2 et des 1 à la condition que l'on est bloqué pour permettre les cartes de se supperposés entre elles    
     public void additionnercartes(String direction) {
         //Dans le cas ou le man il swap vers le haut t'as capté
         // eh oue mon frr jai capté
@@ -112,14 +120,14 @@ public class Grille {
             }
 
         }
-        //La le frro il swappe en bas la
+        //La le frro il swappe en bas la fort
         if (direction == "B") {
 
             for (int j = 0; j < 4; j++) {
                 int i = 3;
                 while (i >= 1 && grille[i][j] != null && grille[i - 1][j] != null) {
                     //On traite le cas ou on a des 2 et des 1
-                    if ((grille[i][j] == 1 || grille[i][i] == 2) && (grille[i - 1][j] == 1 || grille[i - 1][j] == 2)) {
+                    if ((grille[i][j] == 1 || grille[i][j] == 2) && (grille[i - 1][j] == 1 || grille[i - 1][j] == 2)) {
                         if (grille[i][j] == 1 && grille[i - 1][j] == 2 || grille[i][j] == 2 && grille[i - 1][j] == 1) {
                             grille[i][j] = 3;
                             grille[i - 1][j] = null;
@@ -138,6 +146,7 @@ public class Grille {
                 }
 
             }
+
         }
 
         //On swappe a droite
@@ -150,7 +159,7 @@ public class Grille {
                     if ((grille[i][j] == 1 || grille[i][j] == 2) && (grille[i][j - 1] == 1 || grille[i][j - 1] == 2)) {
                         if (grille[i][j] == 1 && grille[i][j - 1] == 2 || grille[i][j] == 2 && grille[i][j - 1] == 1) {
                             grille[i][j] = 3;
-                            grille[i][j] = null;
+                            grille[i][j - 1] = null;
                         }
                     } else {
 
@@ -169,34 +178,37 @@ public class Grille {
 
         }
         //On vote pas a gauche
+        if (direction == "G") {
 
-        for (int i = 0; i < 4; i++) {
-            int j = 0;
-            while (j <= 2 && grille[i][j] != null && grille[i][j + 1] != null) {
-                //On traite le cas ou on a des 2 et des 1
-                if ((grille[i][j] == 1 || grille[i][j] == 2) && (grille[i][j] == 1 || grille[i][j + 1] == 2)) {
-                    if (grille[i][j] == 1 && grille[i][j + 1] == 2 || grille[i][j] == 2 && grille[i][j + 1] == 1) {
-                        grille[i][j] = 3;
-                        grille[i][j + 1] = null;
+            for (int i = 0; i < 4; i++) {
+                int j = 0;
+                while (j <= 2 && grille[i][j] != null && grille[i][j + 1] != null) {
+                    //On traite le cas ou on a des 2 et des 1
+                    if ((grille[i][j] == 1 || grille[i][j] == 2) && (grille[i][j + 1] == 1 || grille[i][j + 1] == 2)) {
+                        if (grille[i][j] == 1 && grille[i][j + 1] == 2 || grille[i][j] == 2 && grille[i][j + 1] == 1) {
+                            grille[i][j] = 3;
+                            grille[i][j + 1] = null;
+                        }
+                    } else {
+
+                        //On traite les autres cas                           
+                        if (grille[i][j] == grille[i][j + 1]) {
+                            grille[i][j] = 2 * grille[i][j];
+                            grille[i][j + 1] = null;
+
+                        }
                     }
-                } else {
+                    j++;
 
-                    //On traite les autres cas                           
-                    if (grille[i][j] == grille[i][j + 1]) {
-                        grille[i][j] = 2 * grille[i][j];
-                        grille[i][j + 1] = null;
-
-                    }
                 }
-                j++;
 
             }
-
         }
 
     }
 
-    public int aditionnergrille() {
+    public int calculscore() {
+        //Cette méthode calcul le score du joueur en ne comptant pas les 1 et les 2
         int score = 0;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
@@ -208,16 +220,50 @@ public class Grille {
         return score;
     }
 
-    public boolean etreperdant() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if ((grille[i][j] != grille[i + 1][j] || grille[i][j] != grille[i][j + 1])) {
-                    return true;
+    public boolean additionimpossible() {
+        //Cette méthode nous permet de vérifier si le joueur n'a plus la possibilité d'additionner 2 cartes quelques soit le cas
+        //Grâce à cette méthode combiné avec la méthode grillepleine on peut savoir si la partie est finie ou non
+        boolean verif = true;
+
+        //On procède a une verficiation au préalable pour s'assurer que la grille est pleine pour ne pas faire de test sur des null
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (grille[i][j] == null) {
+                    verif = false;
                 }
+
             }
         }
-        return false;
+        if (verif == false) {
+            return false;
+        } else {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
 
+                    //On fait un premier test pour ne pas faire de vérification sur des cases nulles
+                    if (grille[i][j] != null && grille[i + 1] != null && grille[i][j + 1] != null) {
+                        //On procède à un premier test pour savoir si il n'y a plus aucun chiffre similaire côte à côte
+                        if ((grille[i][j] != grille[i + 1][j] || grille[i][j] != grille[i][j + 1])) {
+                            //On vérifie ensuite qu'il n'y a pas de 2 et de 1 côte à côte
+                            if ((grille[i][j] == 1 && (grille[i][j + 1] == 2 || grille[i + 1][j] == 2)) || (grille[i][j] == 2 && (grille[i][j + 1] == 1 || grille[i + 1][j] == 1))) {
+
+                                return false;
+                            }
+                            //Dans le cas ou il y a 2 chiffres similaires côte à côte, on vérifie que ce ne sont pas des 1 et des 2
+                        } else {
+                            if (grille[i][j] != 1 && grille[i][j] != 2) {
+                                return false;
+                            }
+                        }
+                    } else {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+
+        }
     }
 
     public void TasserGrille(String direction) {
@@ -279,4 +325,3 @@ public class Grille {
 
     }
 }
-    
