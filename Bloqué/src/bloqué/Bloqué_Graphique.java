@@ -1,33 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package bloqué;
+
+package Bloqué;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
  *
  * @author richa
  */
-public class Bloqué {
+public class Bloqué_Graphique {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Partie nouvellepartie=new Partie(); /* XXX prendre l'habitude d'ecrire plutot nouvellePartie pour etre plus lisible */
-
-        nouvellepartie.DebuterPartie();
         JFrame frame = new JFrame("Bloqué_Graphique");
         frame.setPreferredSize(new Dimension(800 , 800));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -77,8 +73,3 @@ public class Bloqué {
     }
     
 }
-
-/**
- *
- * @author richa
- */
