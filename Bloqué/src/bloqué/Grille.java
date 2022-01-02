@@ -120,7 +120,7 @@ public class Grille {
             }
 
         }
-        //La le frro il swappe en bas la fort
+        //On traite le cas ou le joueur swippe vers le bas
         if (direction == "B") {
 
             for (int j = 0; j < 4; j++) {
@@ -149,7 +149,7 @@ public class Grille {
 
         }
 
-        //On swappe a droite
+        //Dans le cas ou le joueur swippe a droite
         if (direction == "D") {
 
             for (int i = 0; i < 4; i++) {
@@ -177,7 +177,7 @@ public class Grille {
             }
 
         }
-        //On vote pas a gauche
+        //Dans le cas ou il swippe a gauche
         if (direction == "G") {
 
             for (int i = 0; i < 4; i++) {

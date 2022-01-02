@@ -79,7 +79,7 @@ public class Partie {
             System.out.println("Choisissez une direction");
             choixdirection = reponse.nextInt();
 
-            do {
+            do {//On reste dans cette boucle tant que l'utilisateur n'a pas rentré une direction valable
                 if (choixdirection != 8 && choixdirection != 2 && choixdirection != 4 && choixdirection != 6) {
                     System.out.println("Veuillez choisir parmit les directions proposées");
                     System.out.println("8 pour haut \n 2 pour bas \n 6 pour droite \n 4 pour gauche");
@@ -87,8 +87,8 @@ public class Partie {
                 }
 
             } while (choixdirection != 8 && choixdirection != 2 && choixdirection != 4 && choixdirection != 6);
-
-            if (choixdirection == 8) {
+            //Le choix des numéros (8,2,6,4) forment une fleche de direction sur le pavé numérique
+            if (choixdirection == 8) {//On convertit l'entrée de l'utilisateur en string pour faire appelle à nos méthodes
                 direction = "H";
             } else if (choixdirection == 2) {
                 direction = "B";
@@ -108,7 +108,7 @@ public class Partie {
                 while (cmpt == 0) {
                     ligne = 3;
                     colonne = tirage.nextInt(4);
-                    if (grilleJeu.ajoutercartedansgrille(ligne, colonne)) {
+                    if (grilleJeu.ajoutercartedansgrille(ligne, colonne)) {//On verifie qu'il y a bien un espace libre sur la case ou l'on souhaite ajouter une carte
                         cmpt += 1;
 
                     }
